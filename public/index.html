@@ -15,15 +15,21 @@
             socket.on('connect',function(){
                 console.log('Conectado la servidor')
             });
+
             socket.on('disconnect',function(){
                 console.log('Perdimos conexión con el servidor')
             });
 
             socket.emit('message',{name: 'Kevin'});
-            socket.on('message',function(payload){
+
+            socket.on('new-message', function(payload){
                 console.log('Escuchando:', payload);
             });
 
+            socket.on('active-bands', function(bands){
+                console.clear();
+                console.table(bands);
+            });
         </script>
 </body>
 </html>
